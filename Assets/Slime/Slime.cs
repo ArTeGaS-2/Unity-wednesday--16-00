@@ -69,7 +69,7 @@ public class Slime : MonoBehaviour
             1.3f,
             Time.deltaTime / animTime);
         float sideScale = Mathf.Lerp(
-            transform.localScale.z,
+            transform.localScale.x,
             0.8f,
             Time.deltaTime / animTime);
         // Застосовуємо зміни до localScale
@@ -84,11 +84,11 @@ public class Slime : MonoBehaviour
         float forwardScale = Mathf.Lerp(
             transform.localScale.z,
             1f,
-            Time.deltaTime / animTime);
+            (Time.deltaTime / animTime) / 2);
         float sideScale = Mathf.Lerp(
-            transform.localScale.z,
+            transform.localScale.x,
             1f,
-            Time.deltaTime / animTime);
+            (Time.deltaTime / animTime) / 2);
         // Застосовуємо зміни до localScale
         transform.localScale = new Vector3(
             sideScale,
