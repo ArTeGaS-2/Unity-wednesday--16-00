@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2982504468805974244}
   - component: {fileID: 8681136868615069767}
   - component: {fileID: 8245069659606974298}
+  - component: {fileID: -1043287569064332178}
   m_Layer: 0
   m_Name: Microorganism
   m_TagString: Untagged
@@ -108,6 +109,18 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-1043287569064332178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3813595576539786765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0caa16894ce304e40b36f2c7c7adcb8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7299161775857834752
 GameObject:
   m_ObjectHideFlags: 0
