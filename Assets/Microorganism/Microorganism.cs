@@ -6,6 +6,8 @@ public class Microorganism : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
+        Slime.AddSize();
+        Slime.AddCameraDistance();
         Destroy(gameObject);
     }
 }

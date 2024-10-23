@@ -5,6 +5,11 @@ using UnityEngine;
 public class Slime : MonoBehaviour
 {
     public Camera mainCamera; // Посилання на камеру
+    private static float cameraDistance = 6f; // Базова висота
+    private static float cameraRetreat = -0.01f; // Базовий відступ
+    private static float cameraDistanceMod; // Модифікатор висоти
+    private static float cameraForwardMod; // Модифікатор відступу
+
     public float maxSpeed = 10f; // Максимальна швидкість
     public float forceTime = 1.0f; // Час дії інерції
     public float forceMultipier = 100f; // Множник для сили 
@@ -13,9 +18,39 @@ public class Slime : MonoBehaviour
 
     public float animTime = 20f;
 
+    public float divider = 2f; // Множник, або дільник
+
+    public static Vector3 scaleMod; // Модифікатор розміру
+    private static Vector3 currentScale; // Поточний розмір
+    private static float forwardMod; // Модифікатор розтягування
+    private static float sideMod; // Модифікатор стискання
+
     void Start()
     {
+        // Отримуємо доступ до компонента Rigidbody через змінну "rb"
         rb = GetComponent<Rigidbody>();
+        // Привязує початковий розмір, до змінної "currentScale" 
+        currentScale = transform.localScale;
+        // Модифікатор розміру, що буде дорівнювати частині від початкового розміру
+        scaleMod = transform.localScale / divider; // 1 / 2
+
+        // Отримуємо корректні розміру множники для анімації
+        forwardMod = currentScale.z * 1.3f;
+        sideMod = currentScale.x * 0.8f;
+    }
+    public static void AddSize()
+    {
+        // Отримуємо "розмір" = "розмір" + "модифікатор"
+        currentScale = currentScale + scaleMod;
+
+        // Отримуємо корректні розміру множники для анімації
+        forwardMod = currentScale.z * 1.3f;
+        sideMod = currentScale.x * 0.8f;
+    }
+    public static void AddCameraDistance()
+    {
+        cameraDistanceMod = currentScale.x;
+        cameraForwardMod = currentScale.x / 7f;
     }
     void Update()
     {
@@ -58,19 +93,19 @@ public class Slime : MonoBehaviour
         // Камера слідкує за об'єктом гравця
         mainCamera.transform.position = new Vector3(
             transform.position.x,
-            7,
-            transform.position.z - 1f);
+            cameraDistance + cameraDistanceMod,
+            transform.position.z + cameraRetreat + cameraForwardMod);
     }
     private void SlimeMoveAnim()
     {
         // Плавно змінюємо розмір слайма
         float forwardScale = Mathf.Lerp(
             transform.localScale.z,
-            1.3f,
+            forwardMod,
             Time.deltaTime / animTime);
         float sideScale = Mathf.Lerp(
             transform.localScale.x,
-            0.8f,
+            sideMod,
             Time.deltaTime / animTime);
         // Застосовуємо зміни до localScale
         transform.localScale = new Vector3(
@@ -83,11 +118,11 @@ public class Slime : MonoBehaviour
         // Плавно змінюємо розмір слайма
         float forwardScale = Mathf.Lerp(
             transform.localScale.z,
-            1f,
+            currentScale.z,
             (Time.deltaTime / animTime) / 2);
         float sideScale = Mathf.Lerp(
             transform.localScale.x,
-            1f,
+            currentScale.x,
             (Time.deltaTime / animTime) / 2);
         // Застосовуємо зміни до localScale
         transform.localScale = new Vector3(

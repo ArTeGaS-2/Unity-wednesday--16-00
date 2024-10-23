@@ -473,7 +473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   organisms:
   - {fileID: 3813595576539786765, guid: c37018d50a10a094594ac7b569f467aa, type: 3}
-  spawnNumber: 50
+  spawnNumber: 1000
   diameter: 15
 --- !u!1 &410087039
 GameObject:
@@ -745,6 +745,7 @@ MonoBehaviour:
   forceTime: 1
   forceMultipier: 1500
   animTime: 0.2
+  divider: 50
 --- !u!1 &802727949
 GameObject:
   m_ObjectHideFlags: 0

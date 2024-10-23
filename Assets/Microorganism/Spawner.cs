@@ -39,7 +39,7 @@ public class Spawner : MonoBehaviour
                 z_Pos);
             
             // Створюємо обраний об'єкт, в обраному місці, без зміни обертання
-            Instantiate(objectToSpawn, spawnPosition, Quaternion.identity);
+            Instantiate(objectToSpawn, spawnPosition, objectToSpawn.transform.rotation);
         }
     }
 }
