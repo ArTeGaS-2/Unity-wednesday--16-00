@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Slime : MonoBehaviour
 {
+    public static Slime Instance;
+
     public Camera mainCamera; // Посилання на камеру
-    private static float cameraDistance = 6f; // Базова висота
-    private static float cameraRetreat = -0.01f; // Базовий відступ
+    private static float cameraDistance = 7f; // Базова висота
     private static float cameraDistanceMod; // Модифікатор висоти
-    private static float cameraForwardMod; // Модифікатор відступу
+    public float multiplier = 0.02f;
 
     public float maxSpeed = 10f; // Максимальна швидкість
-    public float forceTime = 1.0f; // Час дії інерції
     public float forceMultipier = 100f; // Множник для сили 
+    public float forceMod = 15f;
 
     private Rigidbody rb;
 
@@ -27,6 +28,8 @@ public class Slime : MonoBehaviour
 
     void Start()
     {
+        Instance = this;
+
         // Отримуємо доступ до компонента Rigidbody через змінну "rb"
         rb = GetComponent<Rigidbody>();
         // Привязує початковий розмір, до змінної "currentScale" 
@@ -37,7 +40,14 @@ public class Slime : MonoBehaviour
         // Отримуємо корректні розміру множники для анімації
         forwardMod = currentScale.z * 1.3f;
         sideMod = currentScale.x * 0.8f;
+
+        cameraDistanceMod = multiplier;
     }
+    public void AddSpeedForce()
+    {
+        forceMultipier += forceMod;
+    }
+
     public static void AddSize()
     {
         // Отримуємо "розмір" = "розмір" + "модифікатор"
@@ -49,8 +59,7 @@ public class Slime : MonoBehaviour
     }
     public static void AddCameraDistance()
     {
-        cameraDistanceMod = currentScale.x;
-        cameraForwardMod = currentScale.x / 7f;
+        cameraDistance = cameraDistance + cameraDistanceMod;
     }
     void Update()
     {
@@ -93,8 +102,8 @@ public class Slime : MonoBehaviour
         // Камера слідкує за об'єктом гравця
         mainCamera.transform.position = new Vector3(
             transform.position.x,
-            cameraDistance + cameraDistanceMod,
-            transform.position.z + cameraRetreat + cameraForwardMod);
+            cameraDistance,
+            transform.position.z + -cameraDistance / 7);
     }
     private void SlimeMoveAnim()
     {
