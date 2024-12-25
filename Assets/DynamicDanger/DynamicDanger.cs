@@ -6,10 +6,13 @@ public class DynamicDanger : MonoBehaviour
 {
     public float needToGo = 3f; // Затирмка в часі перед дією
     public float enemySpeed = 5f; // Швидкість ворога / об'єкта
+
+    private float currentAngleY = 90f; // Обертання по Y
+    private float currentAngleZ = 90f; // Обертання по Z
     
     private void Start()
     {
-        StartCoroutine(rotateEnemy()); // Запускаємо метод обертання
+        StartCoroutine(RotateEnemy()); // Запускаємо метод обертання
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -18,15 +21,26 @@ public class DynamicDanger : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
-    private IEnumerator rotateEnemy()
+    private IEnumerator RotateEnemy()
     {
-        // Встановлює затримку перед виконанням наступного рядка коду
-        yield return new WaitForSeconds(needToGo);
-        // Обертаємо ворога на 90 градусів по осі "y".
-        transform.rotation = Quaternion.Euler(
-            transform.rotation.x, // x
-            90,                   // y
-            90);                  // z
+        while (true)
+        {
+            // Встановлює затримку перед виконанням наступного рядка коду
+            yield return new WaitForSeconds(needToGo);
+            // Обертаємо ворога на 90 градусів по осі "y".
+            transform.rotation = Quaternion.Euler(
+                transform.rotation.x, // x
+                currentAngleY,        // y
+                currentAngleZ); // z
+
+            currentAngleY += 90;
+        }
     }
-    
+    private void Update()
+    {
+        transform.position = new Vector3(
+            transform.position.x + enemySpeed * Time.deltaTime,
+            transform.position.y ,
+            transform.position.z);
+    }
 }
