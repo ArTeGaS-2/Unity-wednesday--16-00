@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8681136868615069767}
   - component: {fileID: 8245069659606974298}
   - component: {fileID: -1043287569064332178}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Microorganism
-  m_TagString: Untagged
+  m_TagString: Edible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 6455596790347970234}
   - component: {fileID: 7338167348752299023}
   - component: {fileID: 7106892415631546487}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
