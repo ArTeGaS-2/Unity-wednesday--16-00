@@ -1,9 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 
 public class Enemy : MonoBehaviour
 {
-
+    private Transform target; // Ціль ворога (персонає гравця)
+    private NavMeshAgent agent; // Компонент агента AI Navigation
+    private void Start()
+    {
+        // Знаходимо персонажа гравця по назві і отримуємо позицію
+        target = GameObject.Find("Slime").GetComponent<Transform>();
+        // Отримуємо компонент NavMeshAgent з об'єкту ворога
+        agent = GetComponent<NavMeshAgent>();
+    }
+    private void Update()
+    {
+        // Перевіряє, чи була визначена/ знайдена ціль (гравець)
+        if (target != null)
+        {
+            // Встановлює ціль для об'єкта агента
+            agent.SetDestination(target.position);
+        }
+    }
+    IEnumerator StopMoving()
+    {
+        // Зупиняє ворога 
+        agent.isStopped = true;
+        // Чекає 3 секунди
+        yield return new WaitForSeconds(3f);
+        // Повертає рух ворогу
+        agent.isStopped = false;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(StopMoving());
+        }
+    }
 }
