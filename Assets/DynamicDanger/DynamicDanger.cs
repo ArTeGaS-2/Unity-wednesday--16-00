@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DynamicDanger : MonoBehaviour
 {
@@ -11,11 +12,11 @@ public class DynamicDanger : MonoBehaviour
 
     public float anglePerIteration = 90f; // Зміна кута за ітерацію
 
-    private void OnTriggerEnter(Collider other) // Перевіряє зіткнення
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(other.gameObject); // Знищує об'єкт з яким зіткнувся
+            SceneManager.LoadScene(1);
         }
     }
     private void Start()

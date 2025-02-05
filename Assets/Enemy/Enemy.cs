@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 
 public class Enemy : MonoBehaviour
@@ -33,11 +34,11 @@ public class Enemy : MonoBehaviour
         // Повертає рух ворогу
         agent.isStopped = false;
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(StopMoving());
+            SceneManager.LoadScene(1);
         }
     }
 }
