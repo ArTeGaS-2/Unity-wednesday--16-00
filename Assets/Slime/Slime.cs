@@ -26,10 +26,12 @@ public class Slime : MonoBehaviour
     private static float forwardMod; // Модифікатор розтягування
     private static float sideMod; // Модифікатор стискання
 
-    void Start()
+    private void Awake()
     {
         Instance = this;
-
+    }
+    void Start()
+    {
         // Отримуємо доступ до компонента Rigidbody через змінну "rb"
         rb = GetComponent<Rigidbody>();
         // Привязує початковий розмір, до змінної "currentScale" 
