@@ -1040,6 +1040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d97439479c0ac4390114a609175b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameShop: {fileID: 1115450481}
 --- !u!135 &821900085
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1706,7 +1707,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1187589482}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1959734580}
+        m_TargetAssemblyTypeName: GameShop, Assembly-CSharp
+        m_MethodName: SetColorBlue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1187589482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2225,7 +2238,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1671918285}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1959734580}
+        m_TargetAssemblyTypeName: GameShop, Assembly-CSharp
+        m_MethodName: SetColorGreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1671918285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3269,6 +3294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df1405f841d978478b778f19d2be654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameShop: {fileID: 0}
 --- !u!1001 &200150003277600019
 PrefabInstance:
   m_ObjectHideFlags: 0

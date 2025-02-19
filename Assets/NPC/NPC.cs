@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
-    // Чи знаходиться мишка на об'єкті
-    private void OnMouseOver()
+    public GameObject gameShop; // Посилання на об'єкт магазину
+
+    private void Start()
+    {
+        gameShop = GetComponent<GameObject>();
+        gameShop.SetActive(false);
+    }
+    private void OnMouseOver() // Чи знаходиться мишка на об'єкті
     {
         // Перевіряє натискання правої кнопки миші
         if (Input.GetMouseButtonDown(1))
         {
-            // Пише в консоль підтвердження кліку
-            Debug.Log("Клік працює");
+            gameShop.SetActive(true);
         }
     }
 }

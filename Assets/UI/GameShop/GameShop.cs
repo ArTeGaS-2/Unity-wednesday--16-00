@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameShop : MonoBehaviour
 {
+    public GameObject gameShop;
+
     Renderer slimeRenderer; // Графічний компонент слайма
     private void Start()
     {
@@ -23,6 +25,6 @@ public class GameShop : MonoBehaviour
     }
     public void CloseShop()
     {
-        gameObject.SetActive(false);
+       gameShop.SetActive(false);
     }
 }
