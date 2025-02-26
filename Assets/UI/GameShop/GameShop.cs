@@ -10,6 +10,7 @@ public class GameShop : MonoBehaviour
     private void Start()
     {
         slimeRenderer = Slime.Instance.gameObject.GetComponent<Renderer>();
+        gameShop.SetActive(false);
     }
     public void SetColorRed()
     {

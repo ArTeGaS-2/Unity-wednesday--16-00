@@ -9,7 +9,6 @@ public class NPC : MonoBehaviour
     private void Start()
     {
         gameShop = GetComponent<GameObject>();
-        gameShop.SetActive(false);
     }
     private void OnMouseOver() // Чи знаходиться мишка на об'єкті
     {
