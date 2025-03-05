@@ -26,6 +26,6 @@ public class GameShop : MonoBehaviour
     }
     public void CloseShop()
     {
-       gameShop.SetActive(false);
+        gameShop.SetActive(false);
     }
 }
