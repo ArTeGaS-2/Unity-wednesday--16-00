@@ -24,6 +24,29 @@ public class WASD_Move : MonoBehaviour
     {
         // Отримуємо значення вводу з клавіатури
         Vector3 moveInput = new Vector3(Input.GetAxis("Horizontal"),
-            0,Input.GetAxis("Vertical"));
+            0, Input.GetAxis("Vertical"));
+
+        // Пряме присвоєння швидкості, замість AddForce
+        if (moveInput.magnitude > 0.1f) // Уникаємо дрібного коливання
+        {
+            Vector3 desiredVelocity = moveInput.normalized * maxSpeed;
+            rb.velocity = new Vector3(desiredVelocity.x,
+                rb.velocity.y, desiredVelocity.z);
+        }
+        else
+        {
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        }
+        // Обчислюємо локальний вектор руху відносно поточного повороту
+        Vector3 localMovement = transform.InverseTransformDirection(
+            moveInput);
+        // Передаємо локальні координати в аніматор
+        animator.SetFloat("VelocityX", localMovement.x);
+        animator.SetFloat("VelocityZ", localMovement.z);
+        // Оновлення позиції камери
+        mainCamera.transform.position = new Vector3(
+            transform.position.x,
+            cameraDistance,
+            transform.position.z - cameraDistance / 7);
     }
 }
