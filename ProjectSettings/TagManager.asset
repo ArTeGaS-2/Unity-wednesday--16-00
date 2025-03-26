@@ -9,6 +9,7 @@ TagManager:
   - Struct
   - Danger
   - Edible
+  - Slime
   layers:
   - Default
   - TransparentFX

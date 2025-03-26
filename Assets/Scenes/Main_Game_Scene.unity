@@ -696,11 +696,11 @@ GameObject:
   - component: {fileID: 523202630}
   m_Layer: 10
   m_Name: Slime
-  m_TagString: Player
+  m_TagString: Slime
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &523202625
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2099,7 +2099,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bd4f7a6c326f1244791c65beed80919d,
         type: 3}
       propertyPath: m_Name
-      value: Player_2
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bd4f7a6c326f1244791c65beed80919d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2162,7 +2167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 330585545}
-  maxSpeed: 10
+  maxSpeed: 4
   rotationSpeed: 10
   animator: {fileID: 1338863629}
 --- !u!54 &1338863631

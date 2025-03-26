@@ -9,7 +9,10 @@ public class GameShop : MonoBehaviour
     Renderer slimeRenderer; // Графічний компонент слайма
     private void Start()
     {
-        slimeRenderer = Slime.Instance.gameObject.GetComponent<Renderer>();
+        if (slimeRenderer != null)
+        {
+            slimeRenderer = Slime.Instance.gameObject.GetComponent<Renderer>();
+        }
         gameShop.SetActive(false);
     }
     public void SetColorRed()
