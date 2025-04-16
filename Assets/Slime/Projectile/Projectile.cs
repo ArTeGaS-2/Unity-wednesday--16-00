@@ -24,3 +24,4 @@ public class Projectile : MonoBehaviour
         Destroy(projectile, 10f);
     }
 }
+

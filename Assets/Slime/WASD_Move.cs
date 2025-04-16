@@ -15,10 +15,12 @@ public class WASD_Move : MonoBehaviour
     private Rigidbody rb; // Посилання на фізиний компонент
     public Animator animator; // Посилання на аніматор
 
+    private Projectile projectile;
     private void Start()
     {
         Instance = this;
         rb = GetComponent<Rigidbody>();
+        projectile = GetComponent<Projectile>();
     }
     private void Update()
     {
@@ -62,6 +64,11 @@ public class WASD_Move : MonoBehaviour
                     transform.rotation, targetRotation,
                     Time.deltaTime * rotationSpeed);
             }
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            projectile.ShootProjectileForward();
         }
 
         // Оновлення позиції камери
