@@ -26,12 +26,15 @@ public class Slime : MonoBehaviour
     private static float forwardMod; // Модифікатор розтягування
     private static float sideMod; // Модифікатор стискання
 
+    private Projectile projectileScript; // Скрипт проджектайлу
+
     private void Awake()
     {
         Instance = this;
     }
     void Start()
     {
+        projectileScript = GetComponent<Projectile>();
         // Отримуємо доступ до компонента Rigidbody через змінну "rb"
         rb = GetComponent<Rigidbody>();
         // Привязує початковий розмір, до змінної "currentScale" 
@@ -101,6 +104,12 @@ public class Slime : MonoBehaviour
                 SlimeStopAnim();
             }
         }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            projectileScript.ShootProjectileForward();
+        }
+
         // Камера слідкує за об'єктом гравця
         mainCamera.transform.position = new Vector3(
             transform.position.x,

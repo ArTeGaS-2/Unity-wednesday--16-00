@@ -14,7 +14,8 @@ public class DynamicDanger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") ||
+            other.gameObject.CompareTag("Slime"))
         {
             SceneManager.LoadScene(1);
         }
