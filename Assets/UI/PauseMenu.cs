@@ -14,9 +14,15 @@ public class PauseMenu : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) // Якщо натиснуто ESC
+        if (Input.GetKeyDown(KeyCode.Escape) // Якщо натиснуто ESC
+            && pauseMenuObject.activeSelf == false) // Та вікно не активно
         {
             OpenPauseMenu(); // Відкриваємо меню паузи
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) // Якщо натиснуто ESC
+            && pauseMenuObject.activeSelf == true) // Та вікно активно
+        {
+            ClosePauseMenu(); // Закриваємо меню паузи
         }
     }
     public void OpenPauseMenu()

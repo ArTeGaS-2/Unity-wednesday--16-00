@@ -30,7 +30,7 @@ public class Spawner : MonoBehaviour
 
             // Обираємо випадковий мікроорганізм, з обраних
             GameObject objectToSpawn = organisms[
-                Random.Range(0, organisms.Count - 1)];
+                Random.Range(0, organisms.Count)];
 
             // Визначаємо точку розміщення на ігровому полі
             Vector3 spawnPosition = new Vector3(
